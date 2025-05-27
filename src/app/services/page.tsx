@@ -1,105 +1,117 @@
-import Link from 'next/link';
-import { Metadata } from 'next';
-import TextReveal from '@/components/animation/TextReveal';
-import MagneticButton from '@/components/animation/MagneticButton';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Services | BVYTE Solutions',
-  description: 'Explore our comprehensive IT services including web development, mobile app development, AI solutions, and more.',
-};
+import { motion } from 'framer-motion';
+import MagneticButton from '@/components/animation/MagneticButton';
 
 const services = [
   {
-    id: 'web-development',
     title: 'Web Development',
-    icon: '🌐',
-    description: 'Crafting responsive, high-performing websites tailored to your brand and goals.',
-    features: ['Custom Website Development', 'E-commerce Solutions', 'Progressive Web Apps', 'UI/UX Design'],
+    description: 'Create stunning, responsive websites and web applications using cutting-edge technologies.',
+    features: [
+      'Custom Web Applications',
+      'E-commerce Solutions',
+      'Progressive Web Apps',
+      'API Development'
+    ]
   },
   {
-    id: 'mobile-app-development',
-    title: 'Mobile App Development',
-    icon: '📱',
-    description: 'Building cross-platform mobile apps that deliver seamless user experiences.',
-    features: ['iOS & Android Development', 'Cross-platform Solutions', 'App Maintenance', 'Performance Optimization'],
+    title: 'Mobile Development',
+    description: 'Build native and cross-platform mobile applications that deliver exceptional user experiences.',
+    features: [
+      'iOS Development',
+      'Android Development',
+      'Cross-platform Solutions',
+      'Mobile UI/UX Design'
+    ]
   },
   {
-    id: 'ai-ml',
-    title: 'AI & Machine Learning',
-    icon: '🧠',
-    description: 'Harness the power of AI to automate, analyze, and scale smarter.',
-    features: ['NLP Solutions', 'Predictive Analytics', 'Computer Vision', 'AI Integration'],
+    title: 'Cloud Solutions',
+    description: 'Leverage cloud technologies to scale your business and optimize operations.',
+    features: [
+      'Cloud Migration',
+      'DevOps Services',
+      'Cloud Architecture',
+      'Serverless Solutions'
+    ]
   },
   {
-    id: 'custom-software',
-    title: 'Custom Software Development',
-    icon: '⚙️',
-    description: 'From idea to execution — we develop software that solves real-world problems.',
-    features: ['Business Process Automation', 'SaaS Products', 'Legacy System Modernization', 'Scalable Solutions'],
-  },
-  {
-    id: 'backend-development',
-    title: 'Backend Development',
-    icon: '🧰',
-    description: 'Robust, secure, and scalable backend architecture for every business size.',
-    features: ['API Development', 'Database Design', 'Server Configuration', 'Security Implementation'],
-  },
-  {
-    id: 'cloud-devops',
-    title: 'Cloud & DevOps',
-    icon: '☁️',
-    description: 'Ensure speed, security, and scalability with our cloud-based DevOps practices.',
-    features: ['Cloud Migration', 'CI/CD Implementation', 'Infrastructure as Code', 'Monitoring & Logging'],
-  },
+    title: 'Digital Transformation',
+    description: 'Transform your business with innovative digital solutions and strategies.',
+    features: [
+      'Digital Strategy',
+      'Process Automation',
+      'Legacy System Modernization',
+      'Digital Integration'
+    ]
+  }
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="bg-white text-black pt-32 pb-24">
-      <div className="container mx-auto px-5 max-w-6xl">
-        <TextReveal>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8">
-            Our Services
-          </h1>
-        </TextReveal>
+    <div className="min-h-screen pt-32 px-4 md:px-8 lg:px-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-6xl mx-auto"
+      >
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8">Our Services</h1>
+        <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
+          We offer comprehensive digital solutions to help businesses thrive in the modern digital landscape.
+        </p>
 
-        <TextReveal delay={0.2}>
-          <p className="text-lg md:text-xl max-w-2xl mb-20 opacity-80">
-            We offer a comprehensive range of IT solutions designed to transform your business and drive growth.
-          </p>
-        </TextReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {services.map((service) => (
-            <div
-              key={service.id}
-              className="p-6 border border-gray-100 rounded-sm transition-all duration-300 hover:shadow-lg"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="p-8 rounded-lg bg-secondary/50 hover:bg-secondary/70 transition-colors duration-300"
             >
-              <div className="text-3xl md:text-4xl mb-5">{service.icon}</div>
-              <h2 className="text-2xl md:text-3xl font-light mb-4">{service.title}</h2>
-              <p className="opacity-80 mb-6 leading-relaxed">{service.description}</p>
-
-              <ul className="mb-6 space-y-2">
-                {service.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 opacity-70">
-                    <span className="w-1 h-1 bg-black rounded-full"></span>
-                    {feature}
-                  </li>
+              <h2 className="text-2xl font-light mb-4">{service.title}</h2>
+              <p className="text-muted-foreground mb-6">{service.description}</p>
+              
+              <ul className="space-y-3">
+                {service.features.map((feature, featureIndex) => (
+                  <motion.li
+                    key={featureIndex}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: (index * 0.2) + (featureIndex * 0.1) }}
+                    className="flex items-center space-x-2"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </motion.li>
                 ))}
               </ul>
-
-              <MagneticButton>
-                <Link
-                  href={`/services/${service.id}`}
-                  className="inline-block mt-4 text-lg px-6 py-3 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-300"
-                >
-                  Learn more
-                </Link>
-              </MagneticButton>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="text-center mt-16 p-8 rounded-lg bg-primary/5"
+        >
+          <h2 className="text-2xl font-light mb-4">Ready to Transform Your Business?</h2>
+          <p className="text-muted-foreground mb-8">
+            Let's discuss how our services can help you achieve your digital goals.
+          </p>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+          >
+            <a
+              href="/contact"
+              className="inline-block px-8 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300"
+            >
+              Get Started
+            </a>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

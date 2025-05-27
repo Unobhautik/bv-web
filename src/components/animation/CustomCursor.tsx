@@ -3,11 +3,23 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorVariant, setCursorVariant] = useState('default');
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(true); // Default to true to avoid hydration mismatch
 
-  // Set up event listeners for mouse movement
+  useEffect(() => {
+    setIsDesktop(
+      !navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
+    );
+  }, []);
+
+  return isDesktop;
+}
+
+export default function CustomCursor() {
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 }); // Start cursor off-screen
+  const [cursorVariant, setCursorVariant] = useState('default');
+  const isDesktop = useIsDesktop();
+
   useEffect(() => {
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({
@@ -20,24 +32,26 @@ export default function CustomCursor() {
     const handleMouseEnter = () => setCursorVariant('hover');
     const handleMouseLeave = () => setCursorVariant('default');
 
-    // Add mouse move event listener
-    window.addEventListener('mousemove', mouseMove);
+    if (isDesktop) {
+      // Add mouse move event listener
+      window.addEventListener('mousemove', mouseMove);
 
-    // Add event listeners for all buttons and links
-    const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
-    interactiveElements.forEach((element) => {
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
-    });
-
-    return () => {
-      window.removeEventListener('mousemove', mouseMove);
+      // Add event listeners for all buttons and links
+      const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
       interactiveElements.forEach((element) => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
+        element.addEventListener('mouseenter', handleMouseEnter);
+        element.addEventListener('mouseleave', handleMouseLeave);
       });
-    };
-  }, []);
+
+      return () => {
+        window.removeEventListener('mousemove', mouseMove);
+        interactiveElements.forEach((element) => {
+          element.removeEventListener('mouseenter', handleMouseEnter);
+          element.removeEventListener('mouseleave', handleMouseLeave);
+        });
+      };
+    }
+  }, [isDesktop]);
 
   // Cursor variants for different states
   const variants = {
@@ -89,15 +103,6 @@ export default function CustomCursor() {
       },
     },
   };
-
-  // Only show cursor on desktop devices
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    setIsDesktop(
-      !navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
-    );
-  }, []);
 
   if (!isDesktop) return null;
 

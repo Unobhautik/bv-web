@@ -65,7 +65,7 @@ export default function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 md:py-32 lg:py-40 bg-white text-black relative overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 bg-background relative overflow-hidden"
     >
       <div className="container mx-auto px-5 max-w-6xl">
         <TextReveal>
@@ -77,15 +77,15 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
           <div>
             <TextReveal>
-              <p className="text-lg md:text-xl leading-relaxed mb-8">
-                We're a passionate team of developers, designers, and problem-solvers dedicated to creating impactful digital solutions. Founded by Bhautik Prajapati and Viral Sachde, BVYTE Solutions is more than a company — it's a mindset focused on innovation, quality, and growth.
+              <p className="text-lg md:text-xl leading-relaxed mb-8 text-muted-foreground">
+                We're a passionate team of developers, designers, and problem-solvers dedicated to creating impactful digital solutions. Founded by Bhautik Prajapati and Viral Sachde, FINESSE Solutions is more than a company — it's a mindset focused on innovation, quality, and growth.
               </p>
             </TextReveal>
           </div>
 
           <div>
             <TextReveal delay={0.2}>
-              <p className="text-lg md:text-xl leading-relaxed">
+              <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
                 Our mission is to empower businesses through reliable, scalable, and user-focused digital products. We believe technology should solve real-world problems and create meaningful experiences.
               </p>
             </TextReveal>
@@ -102,12 +102,14 @@ export default function AboutSection() {
           {values.map((value, index) => (
             <div
               key={index}
-              ref={el => valueCardsRef.current[index] = el}
-              className="bg-gray-50 p-8 rounded-sm border border-gray-100"
+              ref={(el: HTMLDivElement | null) => {
+                valueCardsRef.current[index] = el;
+              }}
+              className="bg-secondary/50 p-8 rounded-lg border border-border backdrop-blur-sm"
             >
               <div className="text-4xl mb-6">{value.icon}</div>
               <h4 className="text-xl font-medium mb-4">{value.title}</h4>
-              <p className="text-gray-700">{value.description}</p>
+              <p className="text-muted-foreground">{value.description}</p>
             </div>
           ))}
         </div>
@@ -115,7 +117,7 @@ export default function AboutSection() {
 
       {/* Decorative elements */}
       <motion.div
-        className="absolute -right-20 top-40 w-64 h-64 rounded-full bg-gray-100"
+        className="absolute -right-20 top-40 w-64 h-64 rounded-full bg-primary/5"
         animate={{
           x: [0, 10, 0],
           y: [0, 15, 0],
@@ -129,7 +131,7 @@ export default function AboutSection() {
       />
 
       <motion.div
-        className="absolute -left-10 bottom-40 w-40 h-40 rounded-full bg-gray-100"
+        className="absolute -left-10 bottom-40 w-40 h-40 rounded-full bg-primary/5"
         animate={{
           x: [0, -10, 0],
           y: [0, 10, 0],

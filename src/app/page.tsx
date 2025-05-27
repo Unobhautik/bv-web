@@ -6,9 +6,9 @@ import TestimonialsSection from '@/components/common/TestimonialsSection'
 import TechStackSection from '@/components/common/TechStackSection'
 import ContactSection from '@/components/common/ContactSection'
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
+    <div className="flex flex-col">
       <HeroSection />
       <AboutSection />
       <ServicesSection />
@@ -16,6 +16,6 @@ export default function Home() {
       <TestimonialsSection />
       <TechStackSection />
       <ContactSection />
-    </>
+    </div>
   )
 }

@@ -26,7 +26,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden text-white"
+      className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden"
     >
       <div className="absolute inset-0 w-full h-full z-0">
         <video
@@ -43,7 +43,7 @@ export default function HeroSection() {
         </video>
         <div
           ref={overlayRef}
-          className="absolute inset-0 w-full h-full bg-black opacity-40 z-10"
+          className="absolute inset-0 w-full h-full bg-background/80 backdrop-blur-sm z-10"
         ></div>
       </div>
 
@@ -55,8 +55,8 @@ export default function HeroSection() {
         </TextReveal>
 
         <TextReveal delay={0.4}>
-          <p className="text-lg md:text-xl lg:text-2xl font-light mb-12 max-w-3xl opacity-90">
-            At BVYTE Solutions, we build next-gen digital products that transform businesses.
+          <p className="text-lg md:text-xl lg:text-2xl font-light mb-12 max-w-3xl text-muted-foreground">
+            At Finesse, we build next-gen digital products that transform businesses.
             From scalable software to smart systems — your idea, our code.
           </p>
         </TextReveal>
@@ -70,7 +70,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/contact"
-                className="text-lg px-8 py-4 border rounded-full hover:bg-white hover:text-black transition-colors duration-300 inline-block"
+                className="text-lg px-8 py-4 border border-current rounded-full hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors duration-300 inline-block"
               >
                 Let&apos;s Build Together
               </Link>
@@ -85,7 +85,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/projects"
-                className="text-lg px-8 py-4 border rounded-full hover:bg-white hover:text-black transition-colors duration-300 inline-block"
+                className="text-lg px-8 py-4 border border-current rounded-full hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300 inline-block"
               >
                 View Our Work
               </Link>

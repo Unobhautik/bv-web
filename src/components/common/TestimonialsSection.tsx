@@ -10,7 +10,7 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    quote: "The BVYTE team exceeded our expectations! Their professionalism and speed helped us get our product to market faster.",
+    quote: "The FINESSE team exceeded our expectations! Their professionalism and speed helped us get our product to market faster.",
     author: "Rahul Mehta",
     position: "Founder @ FitWay App",
     image: "https://ext.same-assets.com/4218551665/4290898301.avif"
@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     id: 3,
-    quote: "Working with BVYTE was a game-changer for our business. They understood our needs and delivered beyond expectations.",
+    quote: "Working with FINESSE was a game-changer for our business. They understood our needs and delivered beyond expectations.",
     author: "Amit Patel",
     position: "CTO @ TechSolutions",
     image: "https://ext.same-assets.com/4218551665/1319184709.avif"

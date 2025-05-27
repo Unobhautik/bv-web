@@ -1,13 +1,14 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import SmoothScrollProvider from '@/components/animation/SmoothScrollProvider'
-import CustomCursor from '@/components/animation/CustomCursor'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { ThemeProvider } from '@/components/theme-provider'
+import ClientProviders from '@/components/providers/ClientProviders'
 
 export const metadata: Metadata = {
-  title: 'BVYTE Solutions | Empowering Your Vision with Innovative IT Solutions',
-  description: 'At BVYTE Solutions, we build next-gen digital products that transform businesses. From scalable software to smart systems — your idea, our code.',
+  title: 'FINESSE Solutions | Empowering Your Vision with Innovative IT Solutions',
+  description: 'At FINESSE Solutions, we build next-gen digital products that transform businesses. From scalable software to smart systems — your idea, our code.',
 }
 
 export default function RootLayout({
@@ -16,16 +17,24 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen overflow-x-hidden">
-        <SmoothScrollProvider>
-          <CustomCursor />
-          <Navbar />
-          <main>
-            {children}
-          </main>
-          <Footer />
-        </SmoothScrollProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col bg-background text-foreground">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClientProviders>
+            <SmoothScrollProvider>
+              <Navbar />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </SmoothScrollProvider>
+          </ClientProviders>
+        </ThemeProvider>
       </body>
     </html>
   )
