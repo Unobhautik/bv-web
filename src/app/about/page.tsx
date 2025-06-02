@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import FoundersSection from '@/components/about/FoundersSection';
 
 export default function AboutPage() {
   return (
@@ -65,6 +66,8 @@ export default function AboutPage() {
             </div>
           </div>
         </motion.div>
+
+        <FoundersSection />
       </motion.div>
     </div>
   );

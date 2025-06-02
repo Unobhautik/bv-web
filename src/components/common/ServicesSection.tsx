@@ -11,45 +11,85 @@ import Link from 'next/link';
 const services = [
   {
     id: 'web-dev',
-    title: 'Web Development',
-    icon: '🌐',
-    description: 'Crafting responsive, high-performing websites tailored to your brand and goals.',
-    features: ['Custom Website Development', 'E-commerce Solutions', 'Progressive Web Apps', 'UI/UX Design'],
+    title: 'Strategy',
+    icon: '🎯',
+    description: 'Examining markets, customers, and rivals to shape the company\'s forward view ensuring adaptability in an ever-evolving business landscape.',
+    timeline: '2-4 weeks',
+    features: [
+      'UX Research',
+      'In-depth Interviews',
+      'Competitive Analysis',
+      'Brand Strategy'
+    ],
   },
   {
-    id: 'mobile-dev',
-    title: 'Mobile App Development',
-    icon: '📱',
-    description: 'Building cross-platform mobile apps that deliver seamless user experiences.',
-    features: ['iOS & Android Development', 'Cross-platform Solutions', 'App Maintenance', 'Performance Optimization'],
+    id: 'branding',
+    title: 'Branding',
+    icon: '✨',
+    description: 'Differentiating companies by crafting unique narratives and visual designs that resonate deeply with their target audiences.',
+    timeline: '2-8 weeks',
+    features: [
+      'Logo',
+      'Naming',
+      'Brand Identity',
+      'Design Support',
+      'Brand Book',
+      '3D, Motion'
+    ],
+  },
+  {
+    id: 'digital',
+    title: 'Digital',
+    icon: '💻',
+    description: 'Designing and developing result-oriented websites and user-friendly digital interfaces backed by strong UX Research, engaging copywriting and crisp visuals.',
+    timeline: '1-8 weeks',
+    features: [
+      'Landing Pages',
+      'Corporate Websites',
+      'E-Commerce',
+      'Web Development',
+      'UI/UX Design',
+      'Design Support'
+    ],
   },
   {
     id: 'ai-ml',
     title: 'AI & Machine Learning',
     icon: '🧠',
-    description: 'Harness the power of AI to automate, analyze, and scale smarter.',
-    features: ['NLP Solutions', 'Predictive Analytics', 'Computer Vision', 'AI Integration'],
-  },
-  {
-    id: 'custom-software',
-    title: 'Custom Software Development',
-    icon: '⚙️',
-    description: 'From idea to execution — we develop software that solves real-world problems.',
-    features: ['Business Process Automation', 'SaaS Products', 'Legacy System Modernization', 'Scalable Solutions'],
+    description: 'Harnessing cutting-edge AI technologies to automate processes, analyze data, and drive intelligent business decisions.',
+    timeline: '4-12 weeks',
+    features: [
+      'NLP Solutions',
+      'Predictive Analytics',
+      'Computer Vision',
+      'AI Integration'
+    ],
   },
   {
     id: 'backend-dev',
     title: 'Backend Development',
-    icon: '🧰',
-    description: 'Robust, secure, and scalable backend architecture for every business size.',
-    features: ['API Development', 'Database Design', 'Server Configuration', 'Security Implementation'],
+    icon: '⚙️',
+    description: 'Building robust, secure, and scalable server-side architectures that power modern applications with unmatched reliability.',
+    timeline: '3-10 weeks',
+    features: [
+      'API Development',
+      'Database Design',
+      'Server Configuration',
+      'Security Implementation'
+    ],
   },
   {
     id: 'cloud-devops',
     title: 'Cloud & DevOps',
     icon: '☁️',
-    description: 'Ensure speed, security, and scalability with our cloud-based DevOps practices.',
-    features: ['Cloud Migration', 'CI/CD Implementation', 'Infrastructure as Code', 'Monitoring & Logging'],
+    description: 'Implementing cloud-native solutions and DevOps practices to ensure speed, security, and scalability of your digital infrastructure.',
+    timeline: '2-6 weeks',
+    features: [
+      'Cloud Migration',
+      'CI/CD Implementation',
+      'Infrastructure as Code',
+      'Monitoring & Logging'
+    ],
   },
 ];
 
@@ -112,12 +152,15 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <div
               key={service.id}
-              ref={el => serviceRefs.current[index] = el}
+              ref={(el) => {
+                serviceRefs.current[index] = el;
+              }}
               className="service-card"
               onMouseEnter={() => setActiveService(service.id)}
               onMouseLeave={() => setActiveService(null)}
             >
               <div className="text-3xl md:text-4xl mb-5">{service.icon}</div>
+              <div className="text-sm text-gray-500 mb-2">{service.timeline}</div>
               <h3 className="text-2xl md:text-3xl font-light mb-4">{service.title}</h3>
               <p className="opacity-80 mb-6 leading-relaxed">{service.description}</p>
 

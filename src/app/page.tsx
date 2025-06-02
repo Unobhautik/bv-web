@@ -3,8 +3,9 @@ import AboutSection from '@/components/common/AboutSection'
 import ServicesSection from '@/components/common/ServicesSection'
 import ProjectsSection from '@/components/common/ProjectsSection'
 import TestimonialsSection from '@/components/common/TestimonialsSection'
-import TechStackSection from '@/components/common/TechStackSection'
 import ContactSection from '@/components/common/ContactSection'
+import { ApproachSection } from '@/components/ApproachSection'
+import { MovingTechStack } from '@/components/MovingTechStack'
 
 export default function HomePage() {
   return (
@@ -14,7 +15,8 @@ export default function HomePage() {
       <ServicesSection />
       <ProjectsSection />
       <TestimonialsSection />
-      <TechStackSection />
+      <ApproachSection />
+      <MovingTechStack />
       <ContactSection />
     </div>
   )

@@ -36,7 +36,7 @@ export default function AboutSection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Stagger animation for value cards
+    // Value cards animation
     if (valueCardsRef.current.length) {
       gsap.fromTo(
         valueCardsRef.current,
@@ -92,23 +92,17 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <TextReveal>
-          <h3 className="text-3xl md:text-4xl font-light mb-16">
-            Our Values
-          </h3>
-        </TextReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((value, index) => (
             <div
-              key={index}
+              key={value.title}
               ref={(el: HTMLDivElement | null) => {
                 valueCardsRef.current[index] = el;
               }}
-              className="bg-secondary/50 p-8 rounded-lg border border-border backdrop-blur-sm"
+              className="p-6 rounded-xl bg-secondary/20 hover:bg-secondary/30 transition-colors"
             >
-              <div className="text-4xl mb-6">{value.icon}</div>
-              <h4 className="text-xl font-medium mb-4">{value.title}</h4>
+              <div className="text-4xl mb-4">{value.icon}</div>
+              <h3 className="text-xl font-medium mb-3">{value.title}</h3>
               <p className="text-muted-foreground">{value.description}</p>
             </div>
           ))}

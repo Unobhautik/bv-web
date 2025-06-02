@@ -11,36 +11,40 @@ import Image from 'next/image';
 
 const projects = [
   {
-    id: 'cafepoint',
-    title: 'CafePoint',
-    subtitle: 'Online Food Ordering Website',
-    description: 'A Django-powered platform for a local café to manage orders, menus, and customer data.',
-    tech: ['Django', 'SQLite', 'HTML', 'CSS'],
-    image: 'https://ext.same-assets.com/3450762501/3001657059.avif',
+    id: 'deshana',
+    title: 'Deshana Gifting',
+    subtitle: 'E-commerce Platform',
+    description: 'A modern e-commerce platform for luxury gifting items, featuring divine artifacts, home decor, and premium collections with advanced filtering and seamless checkout.',
+    tech: ['Next.js', 'Shopify', 'TailwindCSS', 'Framer Motion'],
+    image: '/deshana.png',
+    url: 'https://www.deshanagifting.com/',
   },
   {
-    id: 'gogreen',
-    title: 'Go Green, Go Clean',
-    subtitle: 'Smart Waste Management',
-    description: 'A web app built with React and Node.js to monitor and suggest optimized waste disposal methods.',
-    tech: ['React.js', 'Node.js', 'MongoDB'],
-    image: 'https://ext.same-assets.com/3450762501/1664768085.avif',
+    id: 'it-services',
+    title: 'IT Services Platform',
+    subtitle: 'Enterprise Solutions Website',
+    description: 'A comprehensive IT services platform showcasing custom CRM development, ERP solutions, and digital transformation services with modern UI/UX design.',
+    tech: ['React.js', 'Node.js', 'TailwindCSS', 'Vercel'],
+    image: '/asc.png',
+    url: 'https://it-services-webapp.vercel.app/',
   },
   {
-    id: 'airesume',
-    title: 'AI Resume Analyzer',
-    subtitle: 'Smart Resume Processing',
-    description: 'Smart resume checker powered by NLP, giving users insights and improvement suggestions.',
-    tech: ['Streamlit', 'Python', 'MySQL'],
-    image: 'https://ext.same-assets.com/3450762501/1436887613.avif',
+    id: 'bpaperchat',
+    title: 'Document QA System',
+    subtitle: 'AI-Powered PDF Analysis',
+    description: 'An intelligent document analysis tool that uses AI to process PDFs and text files, providing smart answers and insights from uploaded documents.',
+    tech: ['Streamlit', 'Python', 'LangChain', 'OpenAI'],
+    image: '/qa.png',
+    url: 'https://bpaperchat.streamlit.app/',
   },
   {
-    id: 'healthmate',
-    title: 'HealthMate',
-    subtitle: 'Fitness Recommendation System',
-    description: 'An AI-based web app recommending diet and workouts tailored to user preferences.',
-    tech: ['FastAPI', 'Streamlit', 'Scikit-learn'],
-    image: 'https://ext.same-assets.com/3450762501/2545843542.avif',
+    id: 'portfolio',
+    title: 'Developer Portfolio',
+    subtitle: 'Personal Showcase',
+    description: 'A sleek and modern portfolio website with smooth animations, project showcases, and interactive elements demonstrating web development expertise.',
+    tech: ['Next.js', 'TailwindCSS', 'Framer Motion', 'GSAP'],
+    image: '/pf.png',
+    url: 'https://bhautikdev.vercel.app/',
   },
 ];
 
@@ -99,18 +103,29 @@ export default function ProjectsSection() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              ref={el => projectRefs.current[index] = el}
+              ref={el => {
+                projectRefs.current[index] = el;
+              }}
               className="project-card group"
             >
-              <div className="relative overflow-hidden rounded-md mb-6 aspect-[4/3]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-              </div>
+              <a 
+                href={project.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="relative overflow-hidden rounded-lg mb-6 aspect-video bg-gray-100">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 2}
+                  />
+                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                </div>
+              </a>
 
               <div className="flex flex-col">
                 <div className="flex justify-between items-start mb-2">
@@ -132,12 +147,14 @@ export default function ProjectsSection() {
                 </div>
 
                 <MagneticButton>
-                  <Link
-                    href={`/projects/${project.id}`}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm uppercase tracking-wider border-b border-black pb-1 inline-block hover:opacity-70 transition-opacity"
                   >
                     View Project
-                  </Link>
+                  </a>
                 </MagneticButton>
               </div>
             </div>
