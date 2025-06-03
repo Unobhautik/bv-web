@@ -66,7 +66,7 @@ export function ApproachSection() {
     <section className="relative min-h-screen">
       <div className="absolute inset-x-0 top-20 z-10 pointer-events-none">
         <div className="container mx-auto px-4">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
             Our approach to perfect outcomes
           </h2>
         </div>

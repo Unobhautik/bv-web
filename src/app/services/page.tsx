@@ -5,44 +5,86 @@ import MagneticButton from '@/components/animation/MagneticButton';
 
 const services = [
   {
-    title: 'Web Development',
-    description: 'Create stunning, responsive websites and web applications using cutting-edge technologies.',
+    id: 'web-dev',
+    title: 'Strategy',
+    icon: '🎯',
+    description: 'Examining markets, customers, and rivals to shape the company\'s forward view ensuring adaptability in an ever-evolving business landscape.',
+    timeline: '2-4 weeks',
     features: [
-      'Custom Web Applications',
-      'E-commerce Solutions',
-      'Progressive Web Apps',
-      'API Development'
-    ]
+      'UX Research',
+      'In-depth Interviews',
+      'Competitive Analysis',
+      'Brand Strategy'
+    ],
   },
   {
-    title: 'Mobile Development',
-    description: 'Build native and cross-platform mobile applications that deliver exceptional user experiences.',
+    id: 'branding',
+    title: 'Branding',
+    icon: '✨',
+    description: 'Differentiating companies by crafting unique narratives and visual designs that resonate deeply with their target audiences.',
+    timeline: '2-8 weeks',
     features: [
-      'iOS Development',
-      'Android Development',
-      'Cross-platform Solutions',
-      'Mobile UI/UX Design'
-    ]
+      'Logo',
+      'Naming',
+      'Brand Identity',
+      'Design Support',
+      'Brand Book',
+      '3D, Motion'
+    ],
   },
   {
-    title: 'Cloud Solutions',
-    description: 'Leverage cloud technologies to scale your business and optimize operations.',
+    id: 'digital',
+    title: 'Digital',
+    icon: '💻',
+    description: 'Designing and developing result-oriented websites and user-friendly digital interfaces backed by strong UX Research, engaging copywriting and crisp visuals.',
+    timeline: '1-8 weeks',
+    features: [
+      'Landing Pages',
+      'Corporate Websites',
+      'E-Commerce',
+      'Web Development',
+      'UI/UX Design',
+      'Design Support'
+    ],
+  },
+  {
+    id: 'ai-ml',
+    title: 'AI & Machine Learning',
+    icon: '🧠',
+    description: 'Harnessing cutting-edge AI technologies to automate processes, analyze data, and drive intelligent business decisions.',
+    timeline: '4-12 weeks',
+    features: [
+      'NLP Solutions',
+      'Predictive Analytics',
+      'Computer Vision',
+      'AI Integration'
+    ],
+  },
+  {
+    id: 'backend-dev',
+    title: 'Backend Development',
+    icon: '⚙️',
+    description: 'Building robust, secure, and scalable server-side architectures that power modern applications with unmatched reliability.',
+    timeline: '3-10 weeks',
+    features: [
+      'API Development',
+      'Database Design',
+      'Server Configuration',
+      'Security Implementation'
+    ],
+  },
+  {
+    id: 'cloud-devops',
+    title: 'Cloud & DevOps',
+    icon: '☁️',
+    description: 'Implementing cloud-native solutions and DevOps practices to ensure speed, security, and scalability of your digital infrastructure.',
+    timeline: '2-6 weeks',
     features: [
       'Cloud Migration',
-      'DevOps Services',
-      'Cloud Architecture',
-      'Serverless Solutions'
-    ]
-  },
-  {
-    title: 'Digital Transformation',
-    description: 'Transform your business with innovative digital solutions and strategies.',
-    features: [
-      'Digital Strategy',
-      'Process Automation',
-      'Legacy System Modernization',
-      'Digital Integration'
-    ]
+      'CI/CD Implementation',
+      'Infrastructure as Code',
+      'Monitoring & Logging'
+    ],
   }
 ];
 
@@ -57,35 +99,49 @@ export default function ServicesPage() {
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8">Our Services</h1>
         <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
-          We offer comprehensive digital solutions to help businesses thrive in the modern digital landscape.
+          Explore our comprehensive range of services designed to transform your digital presence and drive business growth.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
-              key={service.title}
+              key={service.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="p-8 rounded-lg bg-secondary/50 hover:bg-secondary/70 transition-colors duration-300"
+              className="group relative overflow-hidden rounded-lg bg-secondary/50"
             >
-              <h2 className="text-2xl font-light mb-4">{service.title}</h2>
-              <p className="text-muted-foreground mb-6">{service.description}</p>
-              
-              <ul className="space-y-3">
-                {service.features.map((feature, featureIndex) => (
-                  <motion.li
-                    key={featureIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: (index * 0.2) + (featureIndex * 0.1) }}
-                    className="flex items-center space-x-2"
+              <div className="p-6">
+                <div className="mb-4">
+                  <span className="text-sm text-muted-foreground">{service.timeline}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{service.icon}</span>
+                    <h3 className="text-2xl font-light mt-1">{service.title}</h3>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-6">{service.description}</p>
+                
+                <div className="space-y-2">
+                  {service.features.map((feature, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                      <span className="text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="mt-6"
+                >
+                  <a 
+                    href={`/services/${service.id}`}
+                    className="px-6 py-2 rounded-full border border-current text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300 inline-block"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
+                    Learn More
+                  </a>
+                </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>

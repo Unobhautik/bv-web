@@ -13,28 +13,28 @@ const testimonials = [
     quote: "The FINESSE team exceeded our expectations! Their professionalism and speed helped us get our product to market faster.",
     author: "Rahul Mehta",
     position: "Founder @ FitWay App",
-    image: "https://ext.same-assets.com/4218551665/4290898301.avif"
+    image: "/avatars/male-1.svg"
   },
   {
     id: 2,
     quote: "From design to deployment, they handled everything with precision and care.",
     author: "Priya Shah",
     position: "Owner @ GreenBytes Café",
-    image: "https://ext.same-assets.com/4218551665/2142422427.avif"
+    image: "/avatars/female-1.svg"
   },
   {
     id: 3,
     quote: "Working with FINESSE was a game-changer for our business. They understood our needs and delivered beyond expectations.",
     author: "Amit Patel",
     position: "CTO @ TechSolutions",
-    image: "https://ext.same-assets.com/4218551665/1319184709.avif"
+    image: "/avatars/male-2.svg"
   },
   {
     id: 4,
     quote: "Their technical expertise and attention to detail made all the difference in our project's success.",
     author: "Nisha Desai",
     position: "Product Manager @ HealthTech",
-    image: "https://ext.same-assets.com/4218551665/3926512003.avif"
+    image: "/avatars/female-2.svg"
   }
 ];
 
