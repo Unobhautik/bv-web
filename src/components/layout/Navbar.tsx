@@ -8,6 +8,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '../theme-toggle';
 
+// Add HamburgerMenu component
+const HamburgerMenu = ({ isOpen }: { isOpen: boolean }) => {
+  return (
+    <div className="flex flex-col justify-center items-center w-8 h-8 relative">
+      <motion.span
+        className="w-8 h-0.5 bg-current absolute"
+        animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="w-8 h-0.5 bg-current absolute"
+        animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="w-8 h-0.5 bg-current absolute"
+        animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      />
+    </div>
+  );
+};
+
 const menuItems = [
   { text: 'Home', href: '/' },
   { text: 'Services', href: '/services' },
@@ -169,10 +192,10 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden z-50 text-lg focus:outline-none"
+            className="md:hidden z-50 p-2 focus:outline-none hover:opacity-80 transition-opacity"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? "Close" : "Menu"}
+            <HamburgerMenu isOpen={isMenuOpen} />
           </button>
         </div>
       </nav>
