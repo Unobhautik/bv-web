@@ -160,7 +160,7 @@ const servicesData = {
 
 type ServiceParams = {
   params: {
-    service: string;
+    service: keyof typeof servicesData;
   };
 };
 
